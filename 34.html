@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Nursing Flashcards - Chapter 34: Neuromuscular & Muscular Dysfunction</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 96vh;
+            background: #e3f2fd;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #ff9100;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M20,50 Q50,20 80,50 Q50,80 20,50 Z" fill="white"/><circle cx="50" cy="50" r="15" fill="white"/><path d="M30,30 L40,40 M60,30 L70,40 M30,70 L40,60 M60,70 L70,60" stroke="white" stroke-width="2"/></svg>');
+            background-size: 80px 80px;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            position: relative;
+            color: #bbdefb;
+            line-height: 1.2;
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            color: #90caf9;
+            margin-bottom: 8px;
+        }
+        
+        .progress {
+            background: #0d47a1;
+            height: 6px;
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #ff9100, #ff6d00);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .section-nav {
+            display: flex;
+            gap: 6px;
+            padding: 8px 10px;
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+            border-bottom: 1px solid #ff9100;
+            flex-shrink: 0;
+            overflow-x: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-btn {
+            padding: 5px 10px;
+            border: 2px solid #ff9100;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1565c0;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .section-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 145, 0, 0.4);
+        }
+        
+        .section-btn.active {
+            background: linear-gradient(135deg, #ff9100, #ff6d00);
+            color: #0d47a1;
+            border-color: #1565c0;
+            box-shadow: 0 6px 12px rgba(255, 145, 0, 0.5);
+        }
+        
+        .flashcard {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #e3f2fd;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .question-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #ff9100;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .question-icon {
+            background: linear-gradient(135deg, #1976d2, #ff9100);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+        }
+        
+        .question {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #263238;
+            flex-grow: 1;
+            font-weight: 500;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        .multiple-select-indicator {
+            background: #d32f2f;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 6px;
+            white-space: nowrap;
+            box-shadow: 0 3px 6px rgba(211, 47, 47, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .option {
+            padding: 8px 10px;
+            border: 2px solid #bbdefb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            flex-shrink: 0;
+            min-height: 45px;
+        }
+        
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #ff9100;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 145, 0, 0.2);
+        }
+        
+        .option-letter {
+            background: #bbdefb;
+            color: #1565c0;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            border: 2px solid #90caf9;
+        }
+        
+        /* CORRECT - ALWAYS GREEN */
+        .option.correct {
+            background: #c8e6c9;
+            border-color: #388e3c;
+            color: #1b5e20;
+        }
+        
+        .option.correct .option-letter {
+            background: #388e3c;
+            color: white;
+            border-color: #388e3c;
+        }
+        
+        /* INCORRECT - ALWAYS RED */
+        .option.incorrect {
+            background: #ffcdd2;
+            border-color: #d32f2f;
+            color: #b71c1c;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #d32f2f;
+            color: white;
+            border-color: #d32f2f;
+        }
+        
+        .option.selected {
+            background: #bbdefb;
+            border-color: #ff9100;
+            color: #1565c0;
+        }
+        
+        .option.selected .option-letter {
+            background: #ff9100;
+            color: #1565c0;
+            border-color: #1976d2;
+        }
+        
+        .feedback {
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .feedback.correct {
+            background: #c8e6c9;
+            border: 3px solid #388e3c;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: #ffcdd2;
+            border: 3px solid #d32f2f;
+            color: #b71c1c;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: #bbdefb;
+            border-top: 2px solid #90caf9;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+        
+        .counter {
+            font-weight: bold;
+            color: #1565c0;
+            font-size: 0.9rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 2px solid #ff9100;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1976d2, #ff9100);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(25, 118, 210, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(21, 101, 192, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ff9100, #ff6d00);
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 145, 0, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(211, 47, 47, 0.4);
+        }
+        
+        .rationale {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 3px solid #ffb300;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 8px;
+            display: none;
+            box-shadow: 0 4px 12px rgba(255, 179, 0, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+            max-height: 120px;
+        }
+        
+        .rationale.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .rationale h4 {
+            color: #ff8f00;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .rationale p {
+            color: #856404;
+            line-height: 1.4;
+            font-size: 0.8rem;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stats {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+        
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .cancel-selection {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            margin: 0 auto 8px auto;
+            display: none;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .cancel-selection:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(211, 47, 47, 0.4);
+        }
+        
+        .cancel-selection.show {
+            display: flex;
+        }
+        
+        .multiple-select-instructions {
+            text-align: center;
+            color: #d32f2f;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            background: #fff3cd;
+            padding: 6px;
+            border-radius: 8px;
+            border: 2px solid #ffeaa7;
+            flex-shrink: 0;
+        }
+        
+        .calculation-container {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 8px;
+            padding: 10px;
+            border: 2px solid #bbdefb;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .calculation-question {
+            font-size: 0.85rem;
+            color: #263238;
+            font-weight: 500;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #bbdefb;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-height: 4.5em;
+            flex-shrink: 0;
+        }
+        
+        .calculation-options {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 5px;
+            overflow: hidden;
+            padding: 2px;
+            min-height: 0;
+        }
+        
+        .calculation-option {
+            padding: 8px;
+            border: 2px dashed #ff9100;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1565c0;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            overflow: hidden;
+            line-height: 1.2;
+        }
+        
+        .calculation-option:hover {
+            background: #e3f2fd;
+            border-style: solid;
+            border-color: #ff9100;
+        }
+        
+        .calculation-option.correct {
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+            border-color: #388e3c;
+            border-style: solid;
+            color: #1b5e20;
+        }
+        
+        .calculation-option.incorrect {
+            background: linear-gradient(135deg, #ffcdd2, #ef9a9a);
+            border-color: #d32f2f;
+            border-style: solid;
+            color: #b71c1c;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Remove all scrollbars */
+        .options,
+        .calculation-options,
+        .rationale,
+        .container,
+        .flashcard,
+        body {
+            overflow: hidden !important;
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+        
+        .options::-webkit-scrollbar,
+        .calculation-options::-webkit-scrollbar,
+        .rationale::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                height: 98vh;
+            }
+            
+            .section-btn {
+                min-width: 100px;
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+            
+            .calculation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 10px 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .navigation {
+                padding: 8px 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+            }
+            
+            .counter {
+                order: -1;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 4px;
+                font-size: 0.8rem;
+            }
+            
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .question {
+                font-size: 0.85rem;
+            }
+            
+            .option {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+                min-height: 40px;
+            }
+            
+            .question-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .option-letter {
+                width: 22px;
+                height: 22px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .container {
+                height: 99vh;
+            }
+            
+            .header {
+                padding: 8px 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.1rem;
+            }
+            
+            .header .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .question-container {
+                padding: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .question {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .option {
+                padding: 6px 8px;
+                min-height: 35px;
+                font-size: 0.75rem;
+            }
+            
+            .navigation {
+                padding: 6px 8px;
+            }
+            
+            .rationale {
+                max-height: 80px;
+                padding: 8px;
+            }
+            
+            .feedback {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .option-letter {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .stats {
+                display: none;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .question-container {
+                padding: 8px;
+            }
+            
+            .question-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .option {
+                min-height: 30px;
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+            
+            .option-letter {
+                width: 18px;
+                height: 18px;
+                font-size: 0.65rem;
+            }
+            
+            .btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .rationale {
+                max-height: 60px;
+                padding: 6px;
+            }
+            
+            .rationale p {
+                font-size: 0.7rem;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Chapter 34: Neuromuscular & Muscular Dysfunction</h1>
+            <div class="subtitle">Blue/Orange Neurology Theme - CP, Spina Bifida, Muscular Dystrophy</div>
+            <div class="stats">
+                <div class="stat">📚 41 Questions + 11 MR + 7 Calculations</div>
+                <div class="stat">🎯 Immediate Feedback</div>
+                <div class="stat">✅ Green/Red System</div>
+                <div class="stat">🧮 Dosage Calculations</div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="section-nav">
+            <button class="section-btn active" onclick="setSection('multiple-choice')">Multiple Choice (41)</button>
+            <button class="section-btn" onclick="setSection('multiple-response')">Multiple Response (11)</button>
+            <button class="section-btn" onclick="setSection('calculations')">Calculations (7)</button>
+            <button class="section-btn" onclick="setSection('all')">All Mixed (59)</button>
+        </div>
+        
+        <div class="flashcard">
+            <div class="question-container">
+                <div class="question-icon" id="questionNumber">1</div>
+                <div class="question" id="question"></div>
+                <div class="multiple-select-indicator" id="multipleSelectIndicator" style="display: none;">Multiple Answers</div>
+            </div>
+            
+            <div class="multiple-select-instructions" id="multipleSelectInstructions" style="display: none;">
+                💡 Select ALL correct answers
+            </div>
+            
+            <div class="options" id="options"></div>
+            
+            <div class="calculation-container" id="calculationContainer" style="display: none;">
+                <div class="calculation-question" id="calculationQuestion"></div>
+                <div class="calculation-options" id="calculationOptions"></div>
+            </div>
+            
+            <button class="btn cancel-selection" id="cancelBtn" onclick="cancelSelection()">
+                🔄 Reset
+            </button>
+            
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>💡 Rationale:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+                ⬅️ Prev
+            </button>
+            <div class="counter" id="counter">1/41</div>
+            <button class="btn btn-warning" id="submitBtn" onclick="submitAnswer()" style="display: none;">
+                ✅ Submit
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Chapter 34 Data - Neuromuscular & Muscular Dysfunction
+        const sections = {
+            'multiple-choice': [
+                {
+                    question: "What is the most common cause of cerebral palsy (CP)?",
+                    options: [
+                        "Central nervous system (CNS) diseases",
+                        "Birth asphyxia",
+                        "Cerebral trauma",
+                        "Neonatal encephalopathy"
+                    ],
+                    correct: 3,
+                    rationale: "Approximately 80% of CP is caused by unknown prenatal causes. Neonatal encephalopathy in term and preterm infants is believed to play a significant role in the development of CP."
+                },
+                {
+                    question: "Spastic cerebral palsy (CP) is characterized by which clinical manifestations?",
+                    options: [
+                        "Athetosis, dystonic movements",
+                        "Tremors, lack of active movement",
+                        "Hypertonicity; poor control of posture, balance, and coordinated motion",
+                        "Wide-based gait; poor performance of rapid, repetitive movements"
+                    ],
+                    correct: 2,
+                    rationale: "Hypertonicity and poor control of posture, balance, and coordinated motion are part of the classification of spastic CP."
+                },
+                {
+                    question: "What type of cerebral palsy (CP) is the most common type?",
+                    options: ["Ataxic", "Spastic", "Dyskinetic", "Mixed type"],
+                    correct: 1,
+                    rationale: "Spastic CP is the most common clinical type. Early manifestations are usually generalized hypotonia, or decreased tone that lasts for a few weeks or may extend for months or as long as 1 year."
+                },
+                {
+                    question: "The parents of an infant with cerebral palsy (CP) ask the nurse if their child will have cognitive impairment. The nurse's response should be based on which knowledge?",
+                    options: [
+                        "Affected children have some degree of cognitive impairment.",
+                        "Around 20% of affected children have normal intelligence.",
+                        "About 45% of affected children have normal intelligence.",
+                        "Cognitive impairment is expected if motor and sensory deficits are severe."
+                    ],
+                    correct: 2,
+                    rationale: "Children with CP have a wide range of intelligence, and 40% to 50% are within normal limits. A large percentage of children with CP do not have mental impairment."
+                },
+                {
+                    question: "Gingivitis is a common problem in children with cerebral palsy (CP). What preventive measure should be included in the plan of care?",
+                    options: [
+                        "High-carbohydrate diet",
+                        "Meticulous dental hygiene",
+                        "Minimum use of fluoride",
+                        "Avoidance of medications that contribute to gingivitis"
+                    ],
+                    correct: 1,
+                    rationale: "Meticulous oral hygiene is essential. Many children with CP have congenital enamel defects, high-carbohydrate diets, poor nutritional intake, and difficulty closing their mouths."
+                },
+                {
+                    question: "What is a major goal of therapy for children with cerebral palsy (CP)?",
+                    options: [
+                        "Cure the underlying defect causing the disorder.",
+                        "Reverse the degenerative processes that have occurred.",
+                        "Prevent the spread to individuals in close contact with the child.",
+                        "Recognize the disorder early and promote optimum development."
+                    ],
+                    correct: 3,
+                    rationale: "The goals of therapy include early recognition and promotion of an optimum developmental course to enable affected children to attain their potential within the limits of their dysfunction."
+                },
+                {
+                    question: "The parents of a child with spastic cerebral palsy (CP) state that their child seems to have significant pain. In addition to systemic pharmacologic management, the nurse includes which teaching?",
+                    options: [
+                        "Patterning",
+                        "Positions to reduce spasticity",
+                        "Stretching exercises after meals",
+                        "Topical analgesics for muscle spasms"
+                    ],
+                    correct: 1,
+                    rationale: "Parents and children are taught positions to assume while sitting and recumbent that reduce spasticity."
+                },
+                {
+                    question: "A child, age 3 years, has cerebral palsy (CP) and is hospitalized for orthopedic surgery. His mother says he has difficulty swallowing and cannot hold a utensil to feed himself. He is slightly underweight for his height. What is the most appropriate nursing action related to feeding this child?",
+                    options: [
+                        "Bottle or tube feed him a specialized formula until he gains sufficient weight.",
+                        "Stabilize his jaw with caregiver's hand (either from a front or side position) to facilitate swallowing.",
+                        "Place him in a well-supported, semireclining position.",
+                        "Place him in a sitting position with his neck hyperextended to make use of gravity flow."
+                    ],
+                    correct: 1,
+                    rationale: "Jaw control is compromised in many children with CP. More normal control is achieved if the feeder stabilizes the oral mechanisms from the front or side of the face."
+                },
+                {
+                    question: "An 8-year-old girl with moderate cerebral palsy (CP) recently began joining a regular classroom for part of the day. Her mother asks the school nurse about joining the after-school Girl Scout troop. The nurse's response should be based on which knowledge?",
+                    options: [
+                        "Most activities such as Girl Scouts cannot be adapted for children with CP.",
+                        "After-school activities usually result in extreme fatigue for children with CP.",
+                        "Trying to participate in activities such as Girl Scouts leads to lowered self-esteem in children with CP.",
+                        "Recreational activities often provide children with CP with opportunities for socialization and recreation."
+                    ],
+                    correct: 3,
+                    rationale: "After-school and recreational activities serve to stimulate children's interest and curiosity. They help the children adjust to their disability, improve their functional ability, and build self-esteem."
+                },
+                {
+                    question: "A 4-month-old with significant head lag meets the criteria for floppy infant syndrome. A diagnosis of progressive infantile spinal muscular atrophy (Werdnig-Hoffmann disease) is made. What should be included in the nursing care for this child?",
+                    options: [
+                        "Infant stimulation program",
+                        "Stretching exercises to decrease contractures",
+                        "Limited physical contact to minimize seizures",
+                        "Encouraging parents to have additional children"
+                    ],
+                    correct: 0,
+                    rationale: "Werdnig-Hoffmann disease (spinal muscular atrophy type 1) is the most common paralytic form of floppy infant syndrome. An infant stimulation program is essential."
+                },
+                {
+                    question: "An 8-year-old child is hospitalized with infectious polyneuritis (Guillain-Barré syndrome [GBS]). When explaining this disease process to the parents, what should the nurse consider?",
+                    options: [
+                        "Paralysis is progressive with little hope for recovery.",
+                        "Disease is inherited as an autosomal, sex-linked, recessive gene.",
+                        "Disease results from an apparently toxic reaction to certain medications.",
+                        "Muscle strength slowly returns, and most children recover."
+                    ],
+                    correct: 3,
+                    rationale: "Recovery usually begins within 2 to 3 weeks, and most patients regain full muscle strength. GBS is an immune-mediated disease often associated with a number of viral or bacterial infections."
+                },
+                {
+                    question: "A 12-year-old child with Guillain-Barré syndrome (GBS) is admitted to the pediatric intensive care unit. She tells you that yesterday her legs were weak and that this morning she was unable to walk. After the nurse determines the current level of paralysis, which should the next priority assessment be?",
+                    options: [
+                        "Swallowing ability",
+                        "Parental involvement",
+                        "Level of consciousness",
+                        "Antecedent viral infections"
+                    ],
+                    correct: 0,
+                    rationale: "Assessment of swallowing is essential. Both pharyngeal involvement and respiratory function are usually involved at the same time. The child may require ventilatory support."
+                },
+                {
+                    question: "What statement is most accurate in describing tetanus?",
+                    options: [
+                        "Inflammatory disease that causes extreme, localized muscle spasm.",
+                        "Disease affecting the salivary gland with resultant stiffness of the jaw.",
+                        "Acute infectious disease caused by an exotoxin produced by an anaerobic spore-forming, gram-positive bacillus.",
+                        "Acute infection that causes meningeal inflammation resulting in symptoms of generalized muscle spasm."
+                    ],
+                    correct: 2,
+                    rationale: "Tetanus results from an infection by the anaerobic spore-forming, gram-positive bacillus Clostridium tetani. The organism forms two exotoxins that affect the central nervous system."
+                },
+                {
+                    question: "An adolescent whose leg was crushed when she fell off a horse is admitted to the emergency department. She has completed the tetanus immunization series, receiving the last tetanus toxoid booster 8 years ago. What care is necessary for therapeutic management of this adolescent to prevent tetanus?",
+                    options: [
+                        "Tetanus toxoid booster is needed because of the type of injury.",
+                        "Human tetanus immunoglobulin is indicated for immediate prophylaxis.",
+                        "Concurrent administration of both tetanus immunoglobulin and tetanus antitoxin is needed.",
+                        "No additional tetanus prophylaxis is indicated. The tetanus toxoid booster is protective for 10 years."
+                    ],
+                    correct: 0,
+                    rationale: "Protective levels of antibody are maintained for at least 10 years. Children with serious tetanus-prone wounds should receive a tetanus toxoid booster prophylactically as soon as possible."
+                },
+                {
+                    question: "During a well-child visit, the mother tells the nurse that her 4-month-old infant is constipated, is less active than usual, and has a weak-sounding cry. The nurse suspects botulism and questions the mother about the child's diet. What factor should support this diagnosis?",
+                    options: [
+                        "Breastfeeding",
+                        "Commercial formula",
+                        "Infant cereal with honey",
+                        "Improperly sterilized bottles"
+                    ],
+                    correct: 2,
+                    rationale: "Ingestion of honey is a risk factor for infant botulism in the United States. Honey should not be given to children younger than the age of 1 year."
+                },
+                {
+                    question: "An adolescent has just been brought to the emergency department with a spinal cord injury and paralysis from a diving accident. The parents keep asking the nurse, 'How bad is it?' The nurse's response should be based on which knowledge?",
+                    options: [
+                        "Families adjust better to life-threatening injuries when information is given over time.",
+                        "Immediate loss of function is indicative of the long-term consequences of the injury.",
+                        "Extent and severity of damage cannot be determined for several weeks or even months.",
+                        "Numerous diagnostic tests will be done immediately to determine extent and severity of damage."
+                    ],
+                    correct: 2,
+                    rationale: "The extent and severity of damage cannot be determined initially. The immediate loss of function is caused by anatomic and impaired physiologic function, and improvement may not be evident for weeks or months."
+                },
+                {
+                    question: "A 14-year-old girl is in the intensive care unit after a spinal cord injury 2 days ago. What nursing intervention is a priority for this child?",
+                    options: [
+                        "Minimizing environmental stimuli",
+                        "Administering immunoglobulin",
+                        "Monitoring and maintaining systemic blood pressure",
+                        "Discussing long-term care issues with the family"
+                    ],
+                    correct: 2,
+                    rationale: "Spinal cord injury patients are physiologically labile, and close monitoring is required. They may be unstable for the first few weeks after the injury. Increased blood pressure may be an indication of autonomic dysreflexia."
+                },
+                {
+                    question: "What functional ability should the nurse expect in a child with a spinal cord lesion at C7?",
+                    options: [
+                        "Complete respiratory paralysis",
+                        "No voluntary function of upper extremities",
+                        "Inability to roll over or attain sitting position",
+                        "Almost complete independence within limitations of wheelchair"
+                    ],
+                    correct: 3,
+                    rationale: "Individuals who sustain injuries at the C7 level are able to achieve a significant level of independence. Some assistance is needed with transfers and lower extremity dressing."
+                },
+                {
+                    question: "An adolescent with a spinal cord injury is admitted to a rehabilitation center. Her parents describe her as being angry, hostile, and uncooperative. The nurse should recognize that this is suggestive of which psychosocial state?",
+                    options: [
+                        "Normal phase of adolescent development",
+                        "Severe depression that will require long-term counseling",
+                        "Normal response to her situation that can be redirected in a healthy way",
+                        "Denial response to her situation that makes rehabilitative efforts more difficult"
+                    ],
+                    correct: 2,
+                    rationale: "During the rehabilitation phase, it is desirable for adolescents to begin to express negative feelings toward the situation. The rehabilitation team can redirect the negative energy toward learning a new way of life."
+                },
+                {
+                    question: "What statement best describes Duchenne (pseudohypertrophic) muscular dystrophy (DMD)?",
+                    options: [
+                        "It has an autosomal dominant inheritance pattern.",
+                        "Onset occurs in later childhood and adolescence.",
+                        "It is characterized by presence of Gower sign, a waddling gait, and lordosis.",
+                        "Disease stabilizes during adolescence, allowing for life expectancy to approximately age 40 years."
+                    ],
+                    correct: 2,
+                    rationale: "DMD is characterized by a waddling gait and lordosis. Gower sign is a characteristic way of rising from a squatting or sitting position on the floor. DMD is inherited as an X-linked recessive gene."
+                },
+                {
+                    question: "The nurse is preparing a staff education in-service session for a group of new graduate nurses who will be working in a long-term care facility for children; many of the children have cerebral palsy (CP). What statement should the nurse include in the training?",
+                    options: [
+                        "Children with dyskinetic CP have a wide-based gait and repetitive movements.",
+                        "Children with spastic pyramidal CP have a positive Babinski sign and ankle clonus.",
+                        "Children with hemiplegia CP have mouth muscles and one lower limb affected.",
+                        "Children with ataxic CP have involvement of pharyngeal and oral muscles with dysarthria."
+                    ],
+                    correct: 1,
+                    rationale: "CP has a variety of clinical classifications. Spastic pyramidal CP includes manifestations such as a positive Babinski sign and ankle clonus."
+                },
+                {
+                    question: "The nurse should suspect a child has cerebral palsy (CP) if the parent says what?",
+                    options: [
+                        "My 6-month-old baby is rolling from back to prone now.",
+                        "My 4-month-old doesn't lift his head when on his tummy.",
+                        "My 8-month-old can sit without support.",
+                        "My 10-month-old is not walking."
+                    ],
+                    correct: 1,
+                    rationale: "Delayed gross motor development is a universal manifestation of CP. The child shows a delay in all motor accomplishments. The infant who does not lift his head when on the tummy is showing a gross motor delay."
+                },
+                {
+                    question: "The nurse is caring for a 4-year-old child with cerebral palsy (CP). The child, developmentally, is at an infant stage. Appropriate developmental stimulation for this child should be what?",
+                    options: [
+                        "Playing pat-a-cake with the child",
+                        "None so the child does not become overstimulated",
+                        "Putting a colorful mobile with music on the bed",
+                        "Giving the child a coloring book and crayons"
+                    ],
+                    correct: 2,
+                    rationale: "Incorporating play into the therapeutic program for a child with CP often requires great ingenuity. Objects and toys are chosen for the child's developmental stage to provide needed sensory input."
+                },
+                {
+                    question: "A recommendation to prevent neural tube defects (NTDs) is the supplementation of what?",
+                    options: [
+                        "Vitamin A throughout pregnancy",
+                        "Folic acid for all women of childbearing age",
+                        "Folic acid during the first and second trimesters of pregnancy",
+                        "Multivitamin preparations as soon as pregnancy is suspected"
+                    ],
+                    correct: 1,
+                    rationale: "The widespread use of folic acid among women of childbearing age has decreased the incidence NTDs. Folic acid supplementation is recommended for the preconceptual period, as well as during the pregnancy."
+                },
+                {
+                    question: "The nurse is caring for a family whose infant was just born with anencephaly. What is the most important nursing intervention?",
+                    options: [
+                        "Implement measures to facilitate the attachment process.",
+                        "Help the family cope with the birth of an infant with a fatal defect.",
+                        "Prepare the family for extensive surgical procedures that will be needed.",
+                        "Provide emotional support so the family can adjust to the birth of an infant with problems."
+                    ],
+                    correct: 1,
+                    rationale: "Anencephaly is the most serious neural tube defect. The family requires emotional support and counseling to cope with the birth of an infant with a fatal defect."
+                },
+                {
+                    question: "What refers to a hernial protrusion of a saclike cyst of meninges, spinal fluid, and a portion of the spinal cord with its nerves through a defect in the vertebral column?",
+                    options: ["Rachischisis", "Meningocele", "Encephalocele", "Myelomeningocele"],
+                    correct: 3,
+                    rationale: "A myelomeningocele has a visible defect with an external saclike protrusion, containing meninges, spinal fluid, and nerves."
+                },
+                {
+                    question: "A woman who is 6 weeks pregnant tells the nurse that she is worried that, even though she is taking folic acid supplements, the baby might have spina bifida because of a family history. The nurse's response should be based on what?",
+                    options: [
+                        "Prenatal detection is not possible yet.",
+                        "There is no genetic basis for the defect.",
+                        "Chromosome studies done on amniotic fluid can diagnose the defect prenatally.",
+                        "Open neural tube defects (NTDs) result in elevated concentrations of α-fetoprotein in amniotic fluid."
+                    ],
+                    correct: 3,
+                    rationale: "Ultrasound scanning and measurement of α-fetoprotein may indicate the presence of anencephaly or myelomeningocele. The optimum time for performing this analyzing is between 16 and 18 weeks."
+                },
+                {
+                    question: "The most important nursing intervention when caring for an infant with myelomeningocele in the preoperative stage is which?",
+                    options: [
+                        "Take vital signs every hour.",
+                        "Place the infant on the side to decrease pressure on the spinal sac.",
+                        "Watch for signs that might indicate developing hydrocephalus.",
+                        "Apply a heat lamp to facilitate drying and toughening of the sac."
+                    ],
+                    correct: 1,
+                    rationale: "The spinal sac is protected from damage until surgery is performed. Early surgical closure is recommended to prevent local trauma and infection."
+                },
+                {
+                    question: "Neuropathic bladder disorders are common among children with which disorder?",
+                    options: ["Plagiocephaly", "Meningocele", "Craniosynostosis", "Myelomeningocele"],
+                    correct: 3,
+                    rationale: "Myelomeningocele is one of the most common causes of neuropathic bladder dysfunction among children."
+                },
+                {
+                    question: "What most accurately describes bowel function in children born with a myelomeningocele?",
+                    options: [
+                        "Incontinence cannot be prevented.",
+                        "Enemas and laxatives are contraindicated.",
+                        "Some degree of fecal continence can usually be achieved.",
+                        "Colostomy is usually required by the time the child reaches adolescence."
+                    ],
+                    correct: 2,
+                    rationale: "With a combination of dietary modification, regular toilet habits, and prevention of constipation and impaction, some degree of fecal continence can usually be achieved."
+                },
+                {
+                    question: "The nurse is caring for a neonate born with a myelomeningocele. Surgery to repair the defect is scheduled the next day. What is the most appropriate way to position and feed this neonate?",
+                    options: [
+                        "Prone with the head turned to the side",
+                        "On the side",
+                        "Supine in an infant carrier",
+                        "Supine, with defect supported with rolled blankets"
+                    ],
+                    correct: 0,
+                    rationale: "The prone position with the head turned to the side for feeding is the optimum position for the infant. It protects the spinal sac and allows the infant to be fed without trauma."
+                },
+                {
+                    question: "A goal for children with spina bifida is to reduce the chance of allergy development. What is a priority nursing intervention?",
+                    options: [
+                        "Recommend allergy testing.",
+                        "Provide a latex-free environment.",
+                        "Use only powder-free latex gloves.",
+                        "Limit use of latex products as much as possible."
+                    ],
+                    correct: 1,
+                    rationale: "A latex-free environment is the goal. This includes eliminating the use of latex gloves and other medical devices containing latex."
+                },
+                {
+                    question: "When a child develops latex allergy, which food may also cause an allergic reaction?",
+                    options: ["Yeast", "Wheat", "Peanuts", "Bananas"],
+                    correct: 3,
+                    rationale: "There are cross-reactions between allergies to latex and to a number of foods such as bananas, avocados, kiwi, and chestnuts."
+                },
+                {
+                    question: "The clinic nurse is assessing infant reflexes. What assessment indicates a persistence of primitive reflexes?",
+                    options: [
+                        "Tonic neck reflex at 8 months of age",
+                        "Palmar grasp at 4 months of age",
+                        "Plantar grasp at 9 months of age",
+                        "Rooting reflex at 3 months of age"
+                    ],
+                    correct: 0,
+                    rationale: "Persistence of primitive reflexes is one of the earliest clues to CP (e.g., obligatory tonic neck reflex at any age or nonobligatory persistence beyond 6 months of age)."
+                },
+                {
+                    question: "A toddler with spastic cerebral palsy needs to be transported to the radiology department. What transportation method should the nurse use to take the toddler to the radiology department?",
+                    options: ["A stretcher", "A wheelchair", "A wagon with pillows", "Carried in the nurse's arms"],
+                    correct: 2,
+                    rationale: "A wagon with pillows would support the child with spastic cerebral palsy better than a stretcher or wheelchair."
+                },
+                {
+                    question: "What is the rationale for orthopedic surgery for a child with cerebral palsy?",
+                    options: [
+                        "To cure spasticity",
+                        "To improve function",
+                        "For cosmetic purposes",
+                        "To prevent the need of physical therapy"
+                    ],
+                    correct: 1,
+                    rationale: "Orthopedic surgery is used primarily to improve function rather than for cosmetic purposes and is followed by physical therapy."
+                },
+                {
+                    question: "A feeding technique the nurse can teach to parents of a child with cerebral palsy to improve use of the lips and the tongue to facilitate speech is which?",
+                    options: [
+                        "Feeding pureed foods",
+                        "Placing food on the tongue",
+                        "Placing food at the side of the tongue",
+                        "Placing food directly into the mouth with a spoon"
+                    ],
+                    correct: 2,
+                    rationale: "Feeding techniques such as forcing the child to use the lips and tongue in eating facilitate speech. An example is placing food at the side of the tongue, first one side and then the other."
+                },
+                {
+                    question: "The nurse is teaching the family of an infant with cerebral palsy how to administer a diazepam (Valium) pill by gastrostomy tube. What should the nurse include in the teaching session?",
+                    options: [
+                        "The pill should be crushed and mixed with a small amount of water.",
+                        "The pill should be crushed and mixed with the infant's formula.",
+                        "After administering the medication, flush the tube with air.",
+                        "Before administering the medication, check the placement of the tube."
+                    ],
+                    correct: 0,
+                    rationale: "Pills may be crushed and mixed with small amounts of water but not other liquids, such as formula or elixir medications, because these may act together to form a sludge."
+                },
+                {
+                    question: "The nurse is caring for a child with tetanus during the acute phase. What should the nurse plan in the care for this child?",
+                    options: [
+                        "Playing music on a radio",
+                        "Giving frequent back rubs",
+                        "Providing bright lighting in the room",
+                        "Clustering nursing care to limit distractions"
+                    ],
+                    correct: 3,
+                    rationale: "In caring for a child with tetanus during the acute phase, every effort should be made to control or eliminate stimulation from sound, light, and touch."
+                },
+                {
+                    question: "A mother tells the clinic nurse that she often puts honey on her infant's pacifier to soothe the infant. What response should the nurse make to the mother?",
+                    options: [
+                        "That is a good way to soothe your baby.",
+                        "Honey does not have any soothing effects.",
+                        "There is still a risk for infant botulism from honey.",
+                        "Honey is OK, but it should not be put on the pacifier."
+                    ],
+                    correct: 2,
+                    rationale: "Although the precise source of Clostridium botulinum spores has not been identified as originating from honey in many cases of infant botulism, it is still recommended that honey not be given to infants younger than 12 months."
+                },
+                {
+                    question: "The nurse is caring for a child with myasthenia gravis (MG). What health care prescription should the nurse verify before administering?",
+                    options: [
+                        "Ceftizoxime (Cefizox)",
+                        "Cefotaxime (Claforan)",
+                        "Ceftriaxone (Rocephin)",
+                        "Garamycin (gentamicin)"
+                    ],
+                    correct: 3,
+                    rationale: "Avoid aminoglycoside antibiotics such as gentamicin because they potentiate MG symptoms."
+                }
+            ],
+            
+            'multiple-response': [
+                {
+                    question: "What findings should the nurse expect to observe in a 7-month-old infant with Werdnig-Hoffman disease? (Select all that apply.)",
+                    options: [
+                        "Noticeable scoliosis",
+                        "Absent deep tendon reflexes",
+                        "Abnormal tongue movements",
+                        "Failure to thrive",
+                        "Prominent pectus excavatum",
+                        "Significant leg involvement"
+                    ],
+                    correct: [1, 2, 3],
+                    rationale: "Clinical manifestations of Werdnig-Hoffman disease in an infant include absent deep tendon reflexes, abnormal tongue movements, and failure to thrive."
+                },
+                {
+                    question: "The nurse is teaching the family with a child with cerebral palsy (CP) strategies to prevent constipation. What should the nurse include in the teaching session? (Select all that apply.)",
+                    options: [
+                        "Increase fluid intake.",
+                        "Increase fiber in the diet.",
+                        "Administer stool softeners daily as prescribed.",
+                        "Increase the amount of dairy products in the diet.",
+                        "Allow the child to decide when to try to have a bowel movement."
+                    ],
+                    correct: [0, 1, 2],
+                    rationale: "A variety of factors, including decreased mobility, decreased fluid intake, poor positioning on the toilet, and lack of fiber intake may be responsible for constipation for a child with CP."
+                },
+                {
+                    question: "What functional goal should the nurse expect for a child who has a C7 spinal cord injury? (Select all that apply.)",
+                    options: [
+                        "Able to drive automobile with hand controls",
+                        "Complete independence within limitations of a wheelchair",
+                        "Can roll over in bed, sit up in bed, and eat independently",
+                        "Requires some assistance in transfer and lower extremity dressing",
+                        "Ambulation with bilateral long braces using four-point or swing-through crutch gait"
+                    ],
+                    correct: [1, 2, 3],
+                    rationale: "A child with a C7 spinal cord injury can expect to be completely independent within limitations of a wheelchair, can roll over in bed, sit up in bed, and eat independently, and will require some assistance in transfer and lower extremity dressing."
+                },
+                {
+                    question: "What functional goal should the nurse expect for a child who has a T1 to T10 spinal cord injury? (Select all that apply.)",
+                    options: [
+                        "May be braced for standing",
+                        "Able to drive automobile with hand controls",
+                        "Can manage adapted public transportation",
+                        "Some able to use regular public transportation",
+                        "Ambulates well, often with short leg braces with or without cane"
+                    ],
+                    correct: [0, 1, 2],
+                    rationale: "A child with a T1 to T10 spinal cord injury may be braced for standing, is able to drive an automobile with hand controls, and can manage adapted public transportation."
+                },
+                {
+                    question: "The nurse is preparing to admit a 7-year-old child with ataxic cerebral palsy. What clinical manifestations of ataxic cerebral palsy should the nurse expect to observe? (Select all that apply.)",
+                    options: [
+                        "Wide-based gait",
+                        "Rapid, repetitive movements performed poorly",
+                        "Slow, twisting movements of the trunk or extremities",
+                        "Hypertonicity with poor control of posture, balance, and coordinated motion",
+                        "Disintegration of movements of the upper extremities when the child reaches for objects"
+                    ],
+                    correct: [0, 1, 4],
+                    rationale: "Clinical manifestations of ataxic cerebral palsy include a wide-based gait; rapid, repetitive movements performed poorly; and disintegration of movements of the upper extremities when the child reaches for objects."
+                },
+                {
+                    question: "What are some of the associated disabilities seen with cerebral palsy? (Select all that apply.)",
+                    options: [
+                        "Visual impairment",
+                        "Hearing impairment",
+                        "Speech difficulties",
+                        "Intellectual impairment",
+                        "Associated heart defects"
+                    ],
+                    correct: [0, 1, 2, 3],
+                    rationale: "Some of the disabilities associated with CP are visual impairment, hearing impairment, behavioral problems, communication and speech difficulties, seizures, and intellectual impairment."
+                },
+                {
+                    question: "The nurse is preparing to admit a 5-year-old with spina bifida cystica that was below the second lumbar vertebra. What clinical manifestations of spina bifida cystica below the second lumbar vertebra should the nurse expect to observe? (Select all that apply.)",
+                    options: [
+                        "No motor impairment",
+                        "Lack of bowel control",
+                        "Soft, subcutaneous lipomas",
+                        "Flaccid, partial paralysis of lower extremities",
+                        "Overflow incontinence with constant dribbling of urine"
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "The clinical manifestations of spina bifida cystica below the second lumbar vertebra include lack of bowel control, flaccid, partial paralysis of lower extremities, and overflow incontinence with constant dribbling of urine."
+                },
+                {
+                    question: "The nurse is preparing to admit a 2-year-old child with spina bifida occulta. What clinical manifestations of spina bifida occulta should the nurse expect to observe? (Select all that apply.)",
+                    options: [
+                        "Dark tufts of hair",
+                        "Skin depression or dimple",
+                        "Port-wine angiomatous nevi",
+                        "Soft, subcutaneous lipomas",
+                        "Bladder and sphincter paralysis"
+                    ],
+                    correct: [0, 1, 2, 3],
+                    rationale: "Clinical manifestations of spina bifida occulta include dark tufts of hair; skin depression or dimple; port-wine angiomatous nevi; and soft, subcutaneous lipomas."
+                },
+                {
+                    question: "The nurse is preparing to admit a 5-year-old child with a lower motor neuron syndrome. What clinical manifestations of a lower motor neuron syndrome should the nurse expect to observe? (Select all that apply.)",
+                    options: [
+                        "Loss of hair",
+                        "Babinski reflex present",
+                        "Skin and tissue changes",
+                        "Marked atrophy of atonic muscle",
+                        "Hyperreflexia with tendon reflexes exaggerated"
+                    ],
+                    correct: [0, 2, 3],
+                    rationale: "Clinical manifestations of a lower motor neuron syndrome include loss of hair, skin and tissue changes, and marked atrophy of atonic muscle."
+                },
+                {
+                    question: "The nurse is preparing to admit a 7-year-old child with an upper motor neuron syndrome. What clinical manifestations of an upper motor neuron syndrome should the nurse expect to observe? (Select all that apply.)",
+                    options: [
+                        "No flexor spasms",
+                        "Babinski reflex present",
+                        "No wasting of muscle mass",
+                        "Marked atrophy of atonic muscle",
+                        "Hyperreflexia with tendon reflexes exaggerated"
+                    ],
+                    correct: [1, 2, 4],
+                    rationale: "Clinical manifestations of an upper motor neuron syndrome include Babinski reflex present, no wasting of muscle mass, and hyperreflexia with tendon reflexes exaggerated."
+                },
+                {
+                    question: "The nurse is preparing to admit a 10-year-old child with Duchenne muscular dystrophy. What clinical features of Duchenne muscular dystrophy should the nurse recognize? (Select all that apply.)",
+                    options: [
+                        "Calf muscle hypertrophy",
+                        "Late onset, usually between 6 and 8 years of age",
+                        "Progressive muscular weakness, wasting, and contractures",
+                        "Loss of independent ambulation by 9 to 12 years of age",
+                        "Slowly progressive, generalized weakness during adolescence"
+                    ],
+                    correct: [0, 2, 3, 4],
+                    rationale: "Clinical features of Duchenne muscular dystrophy include calf muscle hypertrophy; progressive muscular weakness, wasting and contractures; loss of independent ambulation by 9 to 12 years of age; and slowly progressive, generalized weakness during adolescence."
+                }
+            ],
+            
+            'calculations': [
+                {
+                    question: "The health care provider has prescribed dantrolene sodium (Dantrium) 0.5 mg/kg PO once a day for a child with cerebral palsy. The child weighs 55 lb. Calculate the dose the nurse should administer in milligrams.",
+                    options: ["11.0 mg", "12.5 mg", "13.0 mg", "14.5 mg"],
+                    correct: 1,
+                    rationale: "55 lb ÷ 2.2 = 25 kg. Dose = 0.5 mg/kg × 25 kg = 12.5 mg"
+                },
+                {
+                    question: "The health care provider has prescribed diazepam (Valium) 0.8 mg/kg/day PO divided q6h for a child with cerebral palsy. The child weighs 110 lb. The nurse is preparing to administer the 1200 dose. Calculate the dose in milligrams.",
+                    options: ["8 mg", "10 mg", "12 mg", "16 mg"],
+                    correct: 1,
+                    rationale: "110 lb ÷ 2.2 = 50 kg. Total daily dose = 0.8 mg/kg × 50 kg = 40 mg/day. Divided q6h = 4 doses/day → per dose = 40 mg ÷ 4 = 10 mg"
+                },
+                {
+                    question: "The health care provider has prescribed neostigmine (Prostigmin) 0.04 mg/kg/dose SC q4-6h PRN for a child with myasthenia gravis. The child weighs 77 lb. Calculate the dose in milligrams.",
+                    options: ["1.2 mg", "1.4 mg", "1.6 mg", "1.8 mg"],
+                    correct: 1,
+                    rationale: "77 lb ÷ 2.2 = 35 kg. Dose = 0.04 mg/kg × 35 kg = 1.4 mg"
+                },
+                {
+                    question: "The health care provider has prescribed oxybutynin (Ditropan) 0.2 mg/kg/day divided bid for a child with myelomeningocele. The child weighs 33 lb. The nurse is preparing to administer the 0900 dose. Calculate the dose in milligrams.",
+                    options: ["1.2 mg", "1.5 mg", "1.8 mg", "2.0 mg"],
+                    correct: 1,
+                    rationale: "33 lb ÷ 2.2 = 15 kg. Total daily dose = 0.2 mg/kg × 15 kg = 3 mg/day. Divided bid → per dose = 3 mg ÷ 2 = 1.5 mg"
+                },
+                {
+                    question: "The health care provider has prescribed gabapentin (Neurontin) 30 mg/kg/day divided q8h for a child with cerebral palsy having seizures. The child weighs 110 lb. The nurse is preparing to administer the 1200 dose. Calculate the dose in milligrams.",
+                    options: ["400 mg", "500 mg", "600 mg", "750 mg"],
+                    correct: 1,
+                    rationale: "110 lb ÷ 2.2 = 50 kg. Total daily dose = 30 mg/kg × 50 kg = 1500 mg/day. Divided q8h = 3 doses/day → per dose = 1500 mg ÷ 3 = 500 mg"
+                },
+                {
+                    question: "The health care provider has prescribed valproic acid (Depakene) 30 mg/kg/day divided bid for a child with cerebral palsy having seizures. The child weighs 22 lb. The nurse is preparing to administer the 0900 dose. Calculate the dose in milligrams.",
+                    options: ["150 mg", "165 mg", "180 mg", "200 mg"],
+                    correct: 1,
+                    rationale: "22 lb ÷ 2.2 = 10 kg. Total daily dose = 30 mg/kg × 10 kg = 300 mg/day. Divided bid → per dose = 300 mg ÷ 2 = 150 mg"
+                },
+                {
+                    question: "The health care provider has prescribed carbamazepine (Tegretol) 20 mg/kg/day divided bid for a child with cerebral palsy having seizures. The child weighs 44 lb. The nurse is preparing to administer the 0900 dose. Calculate the dose in milligrams.",
+                    options: ["180 mg", "200 mg", "220 mg", "240 mg"],
+                    correct: 1,
+                    rationale: "44 lb ÷ 2.2 = 20 kg. Total daily dose = 20 mg/kg × 20 kg = 400 mg/day. Divided bid → per dose = 400 mg ÷ 2 = 200 mg"
+                }
+            ],
+            
+            'all': []
+        };
+
+        // Combine all questions for the 'all' section
+        sections['all'] = [
+            ...sections['multiple-choice'].map(q => ({...q, section: 'multiple-choice'})),
+            ...sections['multiple-response'].map(q => ({...q, section: 'multiple-response'})),
+            ...sections['calculations'].map(q => ({...q, section: 'calculations'}))
+        ];
+
+        let currentSection = 'multiple-choice';
+        let currentQuestion = 0;
+        let selectedOption = null;
+        let selectedOptions = [];
+        let isSubmitted = false;
+        let answers = {
+            'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+            'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+            'calculations': Array(sections['calculations'].length).fill(null),
+            'all': Array(sections['all'].length).fill(null)
+        };
+
+        function setSection(section) {
+            currentSection = section;
+            currentQuestion = 0;
+            selectedOption = null;
+            selectedOptions = [];
+            isSubmitted = false;
+            
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadQuestion();
+        }
+
+        function isMultipleResponseQuestion() {
+            if (currentSection === 'all') {
+                const questionData = getCurrentQuestionData();
+                return questionData?.section === 'multiple-response' || Array.isArray(questionData?.correct);
+            }
+            return currentSection === 'multiple-response';
+        }
+
+        function isCalculationSection() {
+            if (currentSection === 'all') {
+                const questionData = getCurrentQuestionData();
+                return questionData?.section === 'calculations';
+            }
+            return currentSection === 'calculations';
+        }
+
+        function getCurrentQuestionData() {
+            if (currentSection === 'all') {
+                return sections['all'][currentQuestion] || null;
+            } else {
+                return sections[currentSection][currentQuestion];
+            }
+        }
+
+        function loadQuestion() {
+            const questionData = getCurrentQuestionData();
+            
+            if (!questionData) return;
+            
+            const isMultipleResponse = isMultipleResponseQuestion();
+            const isCalculation = isCalculationSection();
+            
+            // Update UI elements visibility
+            document.getElementById('calculationContainer').style.display = isCalculation ? 'flex' : 'none';
+            document.getElementById('options').style.display = isCalculation ? 'none' : 'flex';
+            document.getElementById('multipleSelectIndicator').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('multipleSelectInstructions').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('cancelBtn').classList.remove('show');
+            document.getElementById('submitBtn').style.display = isMultipleResponse ? 'flex' : 'none';
+            document.getElementById('questionNumber').textContent = currentQuestion + 1;
+            
+            let totalQuestions = getTotalQuestions();
+            
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('counter').textContent = `${currentQuestion + 1}/${totalQuestions}`;
+            
+            if (isCalculation) {
+                document.getElementById('calculationQuestion').textContent = questionData.question;
+                loadCalculationOptions(questionData);
+            } else {
+                document.getElementById('question').textContent = questionData.question;
+                loadOptions(questionData);
+            }
+            
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('rationale').classList.remove('show');
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            const isLastQuestion = currentQuestion >= totalQuestions - 1;
+            document.getElementById('nextBtn').textContent = isLastQuestion ? 'Finish ➡️' : 'Next ➡️';
+            document.getElementById('nextBtn').disabled = true;
+            
+            // Load saved answer state
+            const storedAnswer = answers[currentSection][currentQuestion];
+            if (storedAnswer !== null && storedAnswer !== undefined) {
+                if (isMultipleResponse) {
+                    selectedOptions = storedAnswer.selected || [];
+                    isSubmitted = storedAnswer.submitted || false;
+                    
+                    if (isSubmitted) {
+                        showFeedbackForMultipleResponse(questionData);
+                        document.getElementById('nextBtn').disabled = false;
+                        document.getElementById('submitBtn').disabled = true;
+                    } else {
+                        highlightSelectedOptionsForMultipleResponse();
+                        document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+                        document.getElementById('nextBtn').disabled = false;
+                        if (selectedOptions.length > 0) {
+                            document.getElementById('cancelBtn').classList.add('show');
+                        }
+                    }
+                } else if (isCalculation) {
+                    selectedOption = storedAnswer;
+                    highlightCalculationOption(storedAnswer, questionData);
+                    showFeedback(storedAnswer, questionData);
+                    document.getElementById('nextBtn').disabled = false;
+                    document.getElementById('cancelBtn').classList.add('show');
+                } else {
+                    selectedOption = storedAnswer;
+                    highlightSelectedOption(storedAnswer, questionData);
+                    showFeedback(storedAnswer, questionData);
+                    document.getElementById('nextBtn').disabled = false;
+                    document.getElementById('cancelBtn').classList.add('show');
+                }
+            } else {
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                if (isMultipleResponse) {
+                    document.getElementById('submitBtn').disabled = true;
+                }
+            }
+        }
+
+        function loadCalculationOptions(questionData) {
+            const calculationOptions = document.getElementById('calculationOptions');
+            calculationOptions.innerHTML = '';
+            
+            if (questionData.options) {
+                questionData.options.forEach((option, index) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'calculation-option';
+                    optionDiv.textContent = option;
+                    optionDiv.onclick = () => selectCalculationOption(index, questionData);
+                    calculationOptions.appendChild(optionDiv);
+                });
+                
+                const storedAnswer = answers[currentSection][currentQuestion];
+                if (storedAnswer !== null && storedAnswer !== undefined) {
+                    highlightCalculationOption(storedAnswer, questionData);
+                }
+            }
+        }
+
+        function loadOptions(questionData) {
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            questionData.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
+                    <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                    <div class="option-text">${option}</div>
+                `;
+                optionElement.onclick = () => selectOption(index, questionData);
+                optionsContainer.appendChild(optionElement);
+            });
+        }
+
+        function selectOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                handleMultipleResponseSelect(index, questionData);
+            } else {
+                handleSingleSelect(index, questionData);
+            }
+        }
+
+        function selectCalculationOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            answers[currentSection][currentQuestion] = index;
+            selectedOption = index;
+            
+            highlightCalculationOption(index, questionData);
+            showFeedback(index, questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.add('show');
+        }
+
+        function handleSingleSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            answers[currentSection][currentQuestion] = index;
+            selectedOption = index;
+            
+            highlightSelectedOption(index, questionData);
+            showFeedback(index, questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.add('show');
+        }
+
+        function handleMultipleResponseSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            if (isSubmitted) return;
+            
+            const optionIndex = selectedOptions.indexOf(index);
+            if (optionIndex === -1) {
+                selectedOptions.push(index);
+            } else {
+                selectedOptions.splice(optionIndex, 1);
+            }
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Save the selection
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].selected = selectedOptions;
+            answers[currentSection][currentQuestion].submitted = false;
+            
+            document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.toggle('show', selectedOptions.length > 0);
+        }
+
+        function highlightCalculationOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const options = document.querySelectorAll('.calculation-option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (i === index) {
+                    if (i === questionData.correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        options[questionData.correct].classList.add('correct');
+                    }
+                }
+            });
+        }
+
+        function highlightSelectedOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                
+                if (i === index) {
+                    if (i === questionData.correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        options[questionData.correct].classList.add('correct');
+                    }
+                }
+            });
+        }
+
+        function highlightSelectedOptionsForMultipleResponse() {
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (selectedOptions.length === 0) return;
+            
+            isSubmitted = true;
+            
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].submitted = true;
+            
+            const questionData = getCurrentQuestionData();
+            showFeedbackForMultipleResponse(questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('cancelBtn').classList.remove('show');
+        }
+
+        function showFeedback(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            if (index === questionData.correct) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Correct! Well done.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                const correctLetter = String.fromCharCode(65 + questionData.correct);
+                feedbackText.textContent = `Incorrect. Correct: ${correctLetter}`;
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function showFeedbackForMultipleResponse(questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            const allCorrectSelected = questionData.correct.every(c => selectedOptions.includes(c));
+            const noIncorrectSelected = selectedOptions.every(s => questionData.correct.includes(s));
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (questionData.correct.includes(i)) {
+                    option.classList.add('correct');
+                }
+                if (selectedOptions.includes(i) && !questionData.correct.includes(i)) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Perfect! All correct selected.';
+            } else if (allCorrectSelected && !noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Almost! All correct + some incorrect.';
+            } else if (!allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Partially correct! Some correct, missed others.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                feedbackText.textContent = 'Incorrect. Missed correct & selected incorrect.';
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function cancelSelection() {
+            const questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                selectedOptions = [];
+                isSubmitted = false;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                if (answers[currentSection][currentQuestion]) {
+                    answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+                }
+                
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('cancelBtn').classList.remove('show');
+            } else if (isCalculationSection()) {
+                answers[currentSection][currentQuestion] = null;
+                selectedOption = null;
+                
+                document.querySelectorAll('.calculation-option').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('cancelBtn').classList.remove('show');
+            } else {
+                answers[currentSection][currentQuestion] = null;
+                selectedOption = null;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('cancelBtn').classList.remove('show');
+            }
+        }
+
+        function nextCard() {
+            const totalQuestions = getTotalQuestions();
+            
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                loadQuestion();
+            } else {
+                let correctCount = 0;
+                let totalAnswered = 0;
+                
+                Object.keys(answers).forEach(section => {
+                    answers[section].forEach((answer, index) => {
+                        if (answer !== null && answer !== undefined) {
+                            totalAnswered++;
+                            const questionData = getQuestionData(section, index);
+                            
+                            if (Array.isArray(questionData?.correct)) {
+                                if (answer.submitted && Array.isArray(answer.selected)) {
+                                    const allCorrect = questionData.correct.every(c => answer.selected.includes(c));
+                                    const noIncorrect = answer.selected.every(s => questionData.correct.includes(s));
+                                    if (allCorrect && noIncorrect) correctCount++;
+                                }
+                            } else if (questionData?.section === 'calculations') {
+                                if (answer === questionData.correct) correctCount++;
+                            } else {
+                                if (answer === questionData?.correct) correctCount++;
+                            }
+                        }
+                    });
+                });
+                
+                alert(`Quiz completed!\n\nAnswered: ${totalAnswered}\nCorrect: ${correctCount}\n\nClick OK to restart.`);
+                
+                currentSection = 'multiple-choice';
+                currentQuestion = 0;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                answers = {
+                    'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+                    'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+                    'calculations': Array(sections['calculations'].length).fill(null),
+                    'all': Array(sections['all'].length).fill(null)
+                };
+                
+                setSection('multiple-choice');
+            }
+        }
+
+        function previousCard() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                const storedAnswer = answers[currentSection][currentQuestion];
+                
+                if (isMultipleResponseQuestion()) {
+                    selectedOptions = storedAnswer?.selected || [];
+                    isSubmitted = storedAnswer?.submitted || false;
+                } else {
+                    selectedOption = storedAnswer;
+                }
+                
+                loadQuestion();
+            }
+        }
+
+        function getTotalQuestions() {
+            if (currentSection === 'all') {
+                return sections['all'].length;
+            } else {
+                return sections[currentSection].length;
+            }
+        }
+
+        function getQuestionData(section, index) {
+            if (section === 'all') {
+                return sections['all'][index];
+            } else {
+                return sections[section][index];
+            }
+        }
+
+        // Initialize
+        setSection('multiple-choice');
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key >= '1' && event.key <= '4') {
+                const index = parseInt(event.key) - 1;
+                const questionData = getCurrentQuestionData();
+                if (!isCalculationSection()) {
+                    selectOption(index, questionData);
+                }
+            } else if (event.key >= 'a' && event.key <= 'd') {
+                const index = event.key.charCodeAt(0) - 97;
+                const questionData = getCurrentQuestionData();
+                if (!isCalculationSection()) {
+                    selectOption(index, questionData);
+                }
+            } else if (event.key === 'Enter' && isMultipleResponseQuestion()) {
+                if (selectedOptions.length > 0 && !isSubmitted) {
+                    submitAnswer();
+                }
+            } else if (event.key === 'ArrowLeft') {
+                if (!document.getElementById('prevBtn').disabled) {
+                    previousCard();
+                }
+            } else if (event.key === 'ArrowRight') {
+                if (!document.getElementById('nextBtn').disabled) {
+                    nextCard();
+                }
+            } else if (event.key === ' ' || event.key === 'Spacebar') {
+                if (!document.getElementById('nextBtn').disabled && !isMultipleResponseQuestion()) {
+                    nextCard();
+                }
+            } else if (event.key === 'Escape') {
+                cancelSelection();
+            }
+        });
+    </script>
+</body>
+</html>
